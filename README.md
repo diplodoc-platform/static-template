@@ -1,60 +1,11 @@
-# Diplodoc Static Template
+Мои редакции:
 
-### Confgure GitHub Pages
+- [Yandex Tracker](#yandex-tracker)
+- [Умный дом Яндекса](#smart-home)
+- [Yandex Factory](#yandex-factory)
 
-Enable GitHub pages (Settings -> Pages -> Build and deployment (Source) -> GitHub Action), then your github action will start working
+**Группа обеспечения документирования** — это удаленные технические писатели, которые помогают менеджерам службы управления знаниями в разработке документации. Все писатели группы обеспечения документирования проходят специальную подготовку, обучение и обладают набором специфичных навыков для решения конкретных задач.
 
-### Local run
+**Мини-редакция** — команда исполнителей из группы обеспечения документирования, которая следит за качеством определенного направления документирования. Для каждого сервиса или группы документов выделяется одна мини-редакция.
 
-```sh
-rm -rf ./build
-npx -y @diplodoc/cli -i ./ -o ./build
-npx -y http-server ./build --port=5000 --host=0.0.0.0 --cors
-```
-
-After that, just open http://localhost:5000
-
-### Docker
-
-If you need to build docker, just run the code
-
-```sh
-rm -rf ./build ./_site
-npx -y @diplodoc/cli -i ./ -o ./_site
-DOCKER_BUILDKIT=1 docker build --platform linux/amd64 -t MYCOMPANY/docs .
-docker push MYCOMPANY/docs:latest
-```
-
-### GitHub Docker build Action
-
-Add the following secrets into the secret storage
-
-```
-DOCKERHUB_USERNAME
-DOCKERHUB_TOKEN
-```
-
-Add the following steps into `.github/workflows/build.yml`
-
-```yaml
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      -
-        name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Build and push
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          tags: MYCOMPANY/docs:latest
-```
-
+[Руководителем мини-редакции](https://wiki.yandex-team.ru/kpb-writers-lead/ownership/) может выступать менеджер службы управления знаниями или писатель из группы обеспечения документирования, обладающий достаточным опытом в качестве лида. Руководитель занимается организационной работой.
